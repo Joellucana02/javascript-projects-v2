@@ -1,3 +1,7 @@
+const daysEl = document.querySelector('.days'),
+hoursEl = document.querySelector('.hours'),
+minutesEl = document.querySelector('.mins'),
+secondsEl = document.querySelector('.secs');
 const newYear = '1 jan 2022';
 let countDown = ()=>{
     const newYearDate =  new Date(newYear);
@@ -8,6 +12,10 @@ let countDown = ()=>{
     let minutes = Math.floor(totalSecondsLeft /60)%60;
     let seconds = Math.floor(totalSecondsLeft)%60;
     console.log(days, hours, minutes, seconds);
+    daysEl.innerHTML = days;
+    hoursEl.innerHTML = hours;
+    minutesEl.innerHTML = minutes;
+    secondsEl.innerHTML = seconds;
 }
 countDown();
-//setInterval(countDown, 1000);
+setInterval(countDown, 1000);
