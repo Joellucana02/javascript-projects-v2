@@ -62,16 +62,13 @@ question = document.querySelector('.question'),
 submitBtn = document.querySelector('.sub-btn');
 let selectRa = ()=>{
     let radioEl = document.getElementsByName('answer');
-     radioEl.forEach((e)=>{
-        if(e.checked){
-            console.log(e)
-            return e;
-        }
-    })
-    return undefined
+    for(let i = 0; i<radioEl.length;i++){
+        if(radioEl[i].checked) return  {res:radioEl[i].id,
+        id:i}
+    }
 }
 
-let n = 0;
+let n = 0, totalScr =0;
 let addHtml = (n)=>{
     question.innerText = data[n].question;
     aLi.innerText = data[n].a;
@@ -82,15 +79,17 @@ let addHtml = (n)=>{
 addHtml(n);
 submitBtn.addEventListener('click', (e)=>{
     e.preventDefault();
+    let answer = selectRa()
+    console.log(data[n].correct)
+    if(answer.res == data[n].correct){
+        totalScr++;
+    }
     n++;
-    let answer = selectRa();
-    console.log(answer)
     if(n<data.length){
         addHtml(n);
     }else{
+        console.log(`You made ${totalScr}/4`)
+        quizContainer.innerText = `You made ${totalScr}/4`
         console.warn('///...')
     }
 })
-
-/* console.log(data[1].a)
-    console.log(aLi.innerHTML) */
