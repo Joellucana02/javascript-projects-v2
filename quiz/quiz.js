@@ -76,7 +76,7 @@ let addHtml = (n)=>{
     cLi.innerText = data[n].c;
     dLi.innerText = data[n].d;
 }
-addHtml(n);
+addHtml(n); 
 submitBtn.addEventListener('click', (e)=>{
     e.preventDefault();
     let answer = selectRa()
