@@ -1,12 +1,15 @@
 const search = document.getElementById('search'),
 container = document.querySelector('.container'),
 favList = document.querySelector('.fav-list'),
+searchBox = document.querySelector('.search-box'),
 getRandomRe = document.querySelector('.generate-recipe'),
 itemsW = document.querySelector('.items-wrapper');
 let randomRecipe = 'https://www.themealdb.com/api/json/v1/1/random.php';
 let recipesArr = [];
 search.addEventListener('click',()=>{
-    
+    console.log(searchBox.value)
+    bySearchrecipe(searchBox.value);
+
 })
 favList.addEventListener('click', e=>{
     console.log(recipesArr)
@@ -68,8 +71,17 @@ let byIdrecipe = async(id)=>{
 let bySearchrecipe = async(name)=>{
     try {
        let rawData = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`), 
-        data = await rawData.data;
-        console.log(data)
+        data = await rawData.data,
+        cleanData = await data.meals;
+        console.log(data.meals)
+        
+        itemsW.innerHTML = ''
+        cleanData.forEach(elem=>{
+            let liBlock = document.createElement('div');
+        liBlock.classList.add('recipe-item')
+        liBlock.innerHTML = card(elem);
+        itemsW.appendChild(liBlock);
+        })
     } catch (error) {
         console.log(error)
     }
