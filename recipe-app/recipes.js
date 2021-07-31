@@ -41,7 +41,6 @@ let ranRecipe = async()=>{
                     miniBtn.classList.remove('heart-btn-active')
                     removeRecipeFromArr(brData.idMeal)
                  }
-                //heartBtn.classList.toggle('heart-btn-active')
             }) 
             
         } )
@@ -82,6 +81,22 @@ let bySearchrecipe = async(name)=>{
         liBlock.innerHTML = card(elem);
         itemsW.appendChild(liBlock);
         })
+        //
+        /* let heartBtn = itemsW.querySelectorAll('.heart-btn');
+        heartBtn.forEach(miniBtn=>{
+            miniBtn.addEventListener('click',(e)=>{
+                console.log(miniBtn.id)
+                if(!miniBtn.classList.contains('heart-btn-active')){
+                    miniBtn.classList.add('heart-btn-active')
+                    addRecipeToArr(cleanData)
+                }else{
+                    miniBtn.classList.remove('heart-btn-active')
+                    removeRecipeFromArr(cleanData.idMeal)
+                 }
+            }) 
+            
+        } ) */
+
     } catch (error) {
         console.log(error)
     }
@@ -102,7 +117,7 @@ let card = (recipeObj)=>{
                         </div>
                         <div class="recipe-item__body">
                             <h3>${recipeObj.strMeal}</h3>
-                            <button class="heart-btn"><i class="far fa-heart"></i></button>
+                            <button class="heart-btn" id="${recipeObj.idMeal}"><i class="far fa-heart"></i></button>
                         </div>
     `
 }

@@ -1,0 +1,29 @@
+.movie-item img{
+    width: 30%;
+}
+.items-container{
+    position: relative;
+}
+/*  .movie-modal{
+    display: none;
+}  */
+.movie-modal-active{
+    position: absolute;
+    width: 80vw;
+    height: 80vh;
+    top: 0;
+    background: #777;
+}
+.close-modal{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.movie-modal-active img{
+    width:50% ;
+}
+.movie-modal-active div{
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+}
