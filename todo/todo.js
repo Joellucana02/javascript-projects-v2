@@ -14,6 +14,7 @@ formBtn.addEventListener("click", (e) => {
   if (!input.value) return;
   console.log(input.value);
   createTodo(input.value);
+  input.value = "";
 });
 input.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
@@ -22,6 +23,7 @@ input.addEventListener("keypress", (e) => {
     if (!input.value) return;
     console.log(input.value);
     createTodo(input.value);
+    input.value = "";
   }
 });
 
@@ -29,10 +31,17 @@ let createTodo = (inputL) => {
   let div = document.createElement("div");
   div.innerHTML = ulItem(inputL);
   todosContainer.appendChild(div);
+  let remove = document.querySelectorAll(".item-delete");
+  let ulText = document.querySelectorAll(".item-todo");
+  remove.forEach((e) => {
+    e.addEventListener("click", (el) => {
+      e.parentNode.remove(div);
+    });
+  });
 };
 let ulItem = (e) => {
-  return `
+  return `  
     <ul class='item-todo'>${e}</ul>
-    <button class='item-delete'>Delete</button>
+    <button class='item-delete' id='${e}'>Delete</button>
     `;
 };
